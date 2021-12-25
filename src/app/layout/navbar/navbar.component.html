@@ -1,0 +1,75 @@
+<div class="container">
+  <nav class="navbar navbar-expand-md">
+    <a class="logo">
+      <img src="../assets/images/logo.png" id="logo_custom" alt="logo" />
+    </a>
+    <button
+      class="navbar-toggler navbar-toggler-right custom-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#collapsibleNavbar"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" (click)="marketplace()">Marketplace</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="aboutus()">About us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="token()">Token</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="roadmap()">Roadmap</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink=""
+            >Events <span class="comming-soon">Coming soon</span></a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <div
+      class="btn-group profile-dropdown"
+      dropdown
+      #dropdown="bs-dropdown"
+      (mouseenter)="dropdown.show()"
+      (mouseleave)="dropdown.hide()"
+    >
+      <button dropdownToggle class="dropdown-toggle">
+        <img src="./assets/images/profile-dropdown.png" alt="dropdown" />
+      </button>
+      <ul *dropdownMenu class="dropdown-menu" role="menu">
+        <ng-template [ngIf]="username" [ngIfElse]="notLoggedIn">
+          <li role="menuitem">
+            <a class="dropdown-item font-bold"
+              ><span>{{ username }}</span></a
+            >
+          </li>
+          <li role="menuitem">
+            <a class="dropdown-item" (click)="logoutUser()"
+              ><span>Logout</span></a
+            >
+          </li>
+        </ng-template>
+        <ng-template #notLoggedIn>
+          <li role="menuitem">
+            <a class="dropdown-item" (click)="loginModal()"
+              ><span>Login</span></a
+            >
+          </li>
+          <li role="menuitem">
+            <a class="dropdown-item" (click)="signUpModal()"
+              ><span>Sign Up</span></a
+            >
+          </li>
+        </ng-template>
+      </ul>
+    </div>
+  </nav>
+</div>
